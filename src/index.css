@@ -1,0 +1,119 @@
+body,div,ul,li,ol,p,input,button,blockquote,hr{
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+}
+body{
+  font-size: 14px;
+  background: #DFDFDF;
+  overflow-y: scroll;
+}
+ul{
+  list-style: none;
+}
+input,button{
+  outline: none;
+  border:none;
+}
+.clearfix{
+  zoom:1;
+}
+.clearfix::after{
+  content:'';
+  display:block;
+  clear:both;
+}
+a{
+  color:inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+.editor-toolbar{
+  background-color:#FFF;
+  opacity: 1;
+}
+.editor-toolbar:hover{
+  opacity: 1;
+}
+.editor-toolbar a{
+  opacity: .8;
+}
+.editor-toolbar:hover a{
+  opacity: 1;
+}
+/* markdown */
+.markdown-text{
+  padding-top: 10px;
+}
+.markdown-text img{
+  display: block;
+  width:auto;
+}
+.markdown-text p{
+  font-size: 15px;
+  line-height: 1.7em;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.markdown-text h2{
+  font-size: 1.5em;
+  font-weight: 700;
+  -webkit-margin-before: 0.83em;
+  -webkit-margin-after: 0.83em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: bold;
+  border-bottom: 1px solid #dfdfdf;
+  padding-bottom: 5px;
+}
+.markdown-text ul,.markdown-text ol{
+  list-style: disc inside;
+  line-height: 2em;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.markdown-text ol{
+  list-style: decimal inside;
+}
+.markdown-text  ul:last-child > li ul li{
+  list-style: circle inside;
+  text-indent: 30px;
+}
+.markdown-text  a{
+  color: #08c;
+}
+.markdown-text  a:hover{
+  text-decoration:underline;
+}
+.markdown-text img{
+  max-width: 100%;
+}
+.prettyprint{
+  font-size: 14px;
+  border-radius: 0;
+  padding: 0 15px;
+  border: none;
+  margin: 20px -10px;
+  border-width: 1px 0;
+  background: #f7f7f7;
+  -o-tab-size: 4;
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+.prettyprint code{
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent
+}
+blockquote {
+  padding: 0 0 0 15px;
+  margin: 0 0 20px;
+  border-left: 5px solid #eee;
+}
+hr{
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #fff;
+}

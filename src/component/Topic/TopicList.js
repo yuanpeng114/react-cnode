@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {loadMore} from '../../actions/topics';
 import {Link} from 'react-router-dom';
 import styled , {ThemeProvider}from 'styled-components';
-import Loading from '../Common/Loading';
+import {default as Loading} from '../Common/Loading';
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn');
@@ -22,9 +22,13 @@ class Main extends React.Component{
       }
     }
   }
+  imgLoad(index){
+    this.setState({["curImg"+index]: true})
+  }
   componentDidMount(){
     let that = this;
     window.onscroll = function(){
+      // 底部加载更多
       let totalh = document.documentElement.scrollHeight || document.body.scrollHeight;
       let curh = document.documentElement.clientHeight+document.documentElement.scrollTop;
       if(curh>=totalh){
@@ -39,7 +43,15 @@ class Main extends React.Component{
       topicList.map((topic,index)=>(
               <Topic key={index}>
                 <LeftLabel>
-                  <AuthorAvatar src={topic.author.avatar_url}></AuthorAvatar>
+                  {
+                     !this.state["curImg"+index] && <ImgPreLoad></ImgPreLoad>
+                  }
+                  <AuthorAvatar
+                     loaded={this.state["curImg"+index]}
+                     src={topic.author.avatar_url}
+                     onLoad={this.imgLoad.bind(this,index)}
+                     >
+                  </AuthorAvatar>
                   <Count>{`${topic.reply_count}/${topic.visit_count}`}</Count>
                   <Tab good={topic.good}>
                     { topic.top  ? "置顶" : this.state.tab[topic.good || topic.tab] }
@@ -108,6 +120,7 @@ const AuthorAvatar = styled.img
 `
   width:30px;
   height:30px;
+  display: ${props => props.loaded ? "normal": "none"}
 `;
 const Count = styled.span`
   width:70px;
@@ -130,6 +143,10 @@ const TopicTitle = styled.div`
     white-space: nowrap;
     margin:0 10px;
 `;
+const ImgPreLoad = styled.div`
+  width: 30px;
+  height: 30px;
+  background-size:100% 100%;
+`;
 const RightLabel = styled.div``;
-const ReplyUserAvatar = styled.img``;
 const LastReplyDate = styled.span``;

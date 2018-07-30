@@ -28,13 +28,13 @@ class App extends React.Component{
   }
   render(){
     return(
-      <BrowserRouter>
+      <BrowserRouter >
         <div>
           <Header />
           <Route exact path="/" component={TopicList}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/user/:username" component={UserDetail}/>
           <Switch>
+            <Route path="/login" component={Login}/>
+            <Route path="/user/:username" component={UserDetail}/>
             <Route path="/topic/create" component={TopicEditor}/>
             <Route path="/topic/:id" component={TopicDetail}/>
           </Switch>

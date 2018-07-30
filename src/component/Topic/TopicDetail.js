@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import {connect} from "react-redux";
 import Loading from '../Common/Loading';
 import Reply from './Reply';
+import {Link} from 'react-router-dom';
 import {
   getTopicDetail,
   clearTopic,
@@ -106,7 +107,7 @@ class TopicDetail extends React.Component{
                     <HeaderBm>
                         <Tip>
                           <span>发布于{moment(topic.create_at).fromNow()}</span>
-                          <span>作者{topic.author.loginname}</span>
+                          <Link to={`/user/${topic.author.loginname}`}>作者{topic.author.loginname}</Link>
                           <span>{topic.visit_count}次浏览 </span>
                           <span>最后一次编辑是{moment(topic.last_reply_at).fromNow()}</span>
                           <span>来自{this.state.tab[topic.tab]}</span>
@@ -188,7 +189,11 @@ const Title = styled.span`
   vertical-align: bottom;
 `
 const Tag = styled.span`
-  font-size: 12px;
+  font-size: 0.8em;
+  border-radius: 3px;
+  padding: 2px 4px;
+  background: #80bd01;
+  color: #FFF;
 `
 const HeaderBm = styled.div.attrs({
   className: 'clearfix'
@@ -200,6 +205,9 @@ const Tip = styled.p`
   line-hegith: 12px;
   color: #838383;
   margin-top: 0px;
+  & span{
+    margin:0 2px;
+  }
 `
 const CollectButton = styled.button`
   float:right;

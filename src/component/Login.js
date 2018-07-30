@@ -88,7 +88,6 @@ const Input = styled.input`
 `;
 const Button = styled.button`
   margin-top: 10px;
-  font-size:14px;
   line-height: 1;
   color:#FFF;
   background:#1890ff;

@@ -8,7 +8,15 @@ const Loading = () => (
     <LoadBar></LoadBar>
   </LoadWrap>
 )
+const ImgPreLoad = () => (
+  <ImgLoad></ImgLoad>
+)
 
+const ImgLoad = styled.div`
+    width: 30px;
+    height: 30px;
+    background:red;
+`;
 
 const bouncedelay = keyframes`
     0%, 80%, 100% { -webkit-transform: scale(0) }
@@ -40,4 +48,4 @@ const LoadBar = styled.div`
       animation-delay: -0.32s;
     }
 `
-export default  Loading;
+export { Loading as default , ImgPreLoad}

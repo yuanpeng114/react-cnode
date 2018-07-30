@@ -29,18 +29,18 @@ class Header extends React.Component{
   renderRight(isLogin,userName){
     if(isLogin){
       return (
-        <RightSide>
+        <React.Fragment>
           <StyledLink to="/topic/create">发布话题</StyledLink>
           <StyledLink to={`/user/${userName}`}>{userName}</StyledLink>
           <SignOut onClick={this.logOut}>退出</SignOut>
-        </RightSide>
+       </React.Fragment>
       )
     }else if(!this.props.loginMessage){
       return (
-        <RightSide>
+        <React.Fragment>
           <StyledLink to="/topic/create">发布话题</StyledLink>
           <StyledLink to="/login">登陆</StyledLink>
-        </RightSide>
+        </React.Fragment>
       )
     }
   }
@@ -61,7 +61,9 @@ class Header extends React.Component{
                   ))
                 }
               </LeftSide>
-              {this.renderRight(isLogin,userName)}
+              <RightSide>
+                {this.renderRight(isLogin,userName)}
+              </RightSide>
           </HeaderBar>
     )
   }
@@ -83,7 +85,6 @@ const HeaderBar = styled.div`
   background: #444;
   height: 50px;
   line-height: 50px;
-  font-size: 14px;
   padding: 0 20%;
   @media(max-width:576px){
     font-size: 10px;
